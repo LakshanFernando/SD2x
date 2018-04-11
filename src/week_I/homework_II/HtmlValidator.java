@@ -1,6 +1,4 @@
-package week_I;
-
-import week_I.HtmlTag;
+package week_I.homework_II;
 
 import java.util.Queue;
 import java.util.Stack;

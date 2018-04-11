@@ -1,4 +1,4 @@
-package week_I;
+package week_I.homework_I;
 
 import java.util.Arrays;
 import java.util.LinkedList;

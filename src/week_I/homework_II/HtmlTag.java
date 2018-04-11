@@ -1,4 +1,4 @@
-package week_I;
+package week_I.homework_II;
 
 import java.util.Arrays;
 import java.util.HashSet;
