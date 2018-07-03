@@ -1,7 +1,13 @@
+package week_II.homework_IV;
 
-
-
+/*
+* This assignment is about using and modifying a binary search tree implementation in order to determine if the tree is
+* balanced. It introduces a self-balancing implementation that is different from the Red-Black Tree.
+*
+*/
 public class BinarySearchTree<E extends Comparable<E>> {
+
+	// A nested node class for the binary tree.
 	class Node {
 		E value;
 		Node leftChild = null;
@@ -11,10 +17,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
 		}
 		@Override
 		public boolean equals(Object obj) {
-			if ((obj instanceof BinarySearchTree.Node) == false)
+			if (!(obj instanceof BinarySearchTree.Node))
 				return false;
 			@SuppressWarnings("unchecked")
-			Node other = (BinarySearchTree<E>.Node)obj;
+			Node other = (BinarySearchTree.Node)obj;
+			// for equality the value, the left & right children of this node must be equal to those of the node
+			// being compared.
 			return other.value.compareTo(value) == 0 &&
 					other.leftChild == leftChild && other.rightChild == rightChild;
 		}
@@ -81,9 +89,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	protected boolean remove(Node n, Node parent, E val) {
 		if (n == null) return false;
 
-		if (val.compareTo(n.value) == -1) {
+		if (val.compareTo(n.value) < 0) {
 				return remove(n.leftChild, n, val);
-		} else if (val.compareTo(n.value) == 1) {
+		} else if (val.compareTo(n.value) > 0) {
 				return remove(n.rightChild, n, val);
 		} else {
 			if (n.leftChild != null && n.rightChild != null){
@@ -108,58 +116,107 @@ public class BinarySearchTree<E extends Comparable<E>> {
 	    }
 	}
 
-	
-	/*********************************************
-	 * 
-	 * IMPLEMENT THE METHODS BELOW!
-	 *
-	 *********************************************/
-	
-	
-	// Method #1.
+
+	/*
+	 IMPLEMENT THE METHODS BELOW!
+	 */
+
+
+	/**
+	 * Given a value stored in the binary in the BST, it returns the corresponding {Node} that holds it.
+	 * @param val: the value whose node is being looked for
+	 * @return the node holding the value.
+	 */
 	public Node findNode(E val) {
+		if (val == null) return null;
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return null; // this line is here only so this code will compile if you don't modify it
-
+		return findNode(root, val);
 	}
-	
-	// Method #2.
+
+	/*
+	* Takes the value whose node is to be found and an entry point into the tree.
+	* if the value at the entry node is equal to {val} returns the entry node.
+	* else if {val} is less than the value at the entry point, it searches the left child of the entry point recursively
+	* else it searches the right recursively.
+	*/
+	private Node findNode(Node node, E val) {
+		if (node == null) return null;
+
+		if (node.value.equals(val)) return node;
+		else if (node.value.compareTo(val) > 0) return findNode(node.leftChild, val);
+		else return findNode(node.rightChild, val);
+	}
+
+	/**
+	 * @param val
+	 * @return
+	 */
 	protected int depth(E val) {
+		if (val == null) return -1;
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return -2; // this line is here only so this code will compile if you don't modify it
+		Node node = root;
+		int depth = 0;
 
+		while (true) {
+			if (node.value.equals(val)) return depth;
+			else if (node.value.compareTo(val) > 0) node = node.leftChild;
+			else node = node.rightChild;
+
+			depth++;
+			if (node == null) return -1;
+		}
 	}
-	
-	// Method #3.
+
+	/**
+	 * @param val
+	 * @return
+	 */
 	protected int height(E val) {
+		if (val == null) return -1;
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return -2; // this line is here only so this code will compile if you don't modify it
+		// checks if the node of the val exists in the tree, if not returns -1
+		Node node = findNode(val);
+		if (node == null) return -1;
 
+		return height(node);
+	}
+
+	private int height(Node node) {
+		if (node == null) return -1;
+
+		if (node.leftChild == null && node.rightChild == null) return 0;
+
+		return 1 + Math.max(height(node.rightChild), height(node.leftChild));
 	}
 
 
-	// Method #4.
+	/**
+	 * @param n
+	 * @return
+	 */
 	protected boolean isBalanced(Node n) {
+		if (n == null || !contains(n.value)) return false;
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return true; // this line is here only so this code will compile if you don't modify it
-
+		// A node in a BTS is balanced if he different btw it left and right children is less than 2
+		return Math.abs(height(n.rightChild) - height(n.leftChild)) < 2;
 	}
-	
-	// Method #5. .
+
+	/**
+	 * @return
+	 */
 	public boolean isBalanced() {
+		return isBalancedTo(root);
+	}
 
-		/* IMPLEMENT THIS METHOD! */
-		
-		return false; // this line is here only so this code will compile if you don't modify it
+	private boolean isBalancedTo(Node node) {
+		if (node == null) return false;
 
+		boolean result = isBalanced(node);
+
+		if (node.leftChild != null) result = result && isBalanced(node.leftChild);
+		if (node.rightChild != null) result = result && isBalanced(node.rightChild);
+
+		return result;
 	}
 
 }
