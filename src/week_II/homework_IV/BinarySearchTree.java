@@ -5,6 +5,7 @@ package week_II.homework_IV;
 * balanced. It introduces a self-balancing implementation that is different from the Red-Black Tree.
 *
 */
+@SuppressWarnings("ALL")
 public class BinarySearchTree<E extends Comparable<E>> {
 
 	// A nested node class for the binary tree.
