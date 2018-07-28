@@ -5,11 +5,14 @@ package week_II.homework_VIII;
  * You should not modify this code. You do not need to submit it.
  */
 
+import java.util.Scanner;
+
 public class Main {
 	
 	public static void main(String[] args) {
-		
-		DataTier dt = new DataTier(args[0]);
+		Scanner scan = new Scanner(System.in);
+        System.out.println("Please enter a file:");
+		DataTier dt = new DataTier(scan.nextLine());
 		LogicTier lt = new LogicTier(dt);
 		PresentationTier pt = new PresentationTier(lt);
 		pt.start();

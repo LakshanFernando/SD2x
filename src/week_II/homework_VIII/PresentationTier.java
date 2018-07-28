@@ -19,7 +19,7 @@ public class PresentationTier {
 	
 	public void start() {
 	    String character = "====";
-        System.out.printf("%s Welcome %s", character, character);
+        System.out.printf("%s Welcome %s\n", character, character);
         System.out.print("\tA. Find books by author name\t\t");
         System.out.print("\tB. Find number of books published in the year\n");
         System.out.println("Select an action: ");
