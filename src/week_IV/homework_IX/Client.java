@@ -17,7 +17,7 @@ public class Client {
 		String author = "John Doe";
 		int startPage = 5;
 		int endPage = 6;
-		Set<String> editors = new HashSet<String>();
+		Set<String> editors = new HashSet<>();
 		editors.add("Rachel Smith");
 		editors.add("Arvind Bhusnurmath");
 		String newspaper = "The edX Times";
@@ -26,7 +26,8 @@ public class Client {
 		String state = "PA";
 		String postCode = "19104";
 		
-		NewspaperArticle article = new NewspaperArticle(title, author, startPage, endPage, editors, newspaper, date, city, state, postCode);
+		NewspaperArticle article = new NewspaperArticle(title, author, startPage, endPage, editors,
+                newspaper, date, city, state, postCode);
 		
 		System.out.println(article.getTitle());		
 		System.out.println(article.getAuthor());
@@ -43,8 +44,6 @@ public class Client {
 
 		System.out.println(article.numEditors());
 		System.out.println(article.numPages());
-
-
 	}
 	
 	public void compare(NewspaperArticle article1, NewspaperArticle article2) {
@@ -55,6 +54,4 @@ public class Client {
 				
 		System.out.println(article1.compareWithGeneralDate(new Date()));
 	}
-
-	
 }
