@@ -1,4 +1,4 @@
-package week_II.homework_VII;
+package week_III.homework_VII;
 
 public class Wall {
     public Wall() {}

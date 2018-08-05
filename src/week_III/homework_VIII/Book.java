@@ -1,4 +1,4 @@
-package week_II.homework_VIII;/*
+package week_III.homework_VIII;/*
  * SD2x Homework #8
  * This class represents a single book.
  * Please do not change this code! Your solution will be evaluated using this version of the class.
