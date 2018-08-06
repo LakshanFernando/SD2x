@@ -6,6 +6,7 @@ package week_IV.homework_IX;
  */
 import java.util.*;
 
+@SuppressWarnings("all")
 public class NewspaperArticle extends Document{
 	private int startPage;
 	private int endPage;

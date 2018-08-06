@@ -1,5 +1,6 @@
 package week_IV.homework_IX;
 
+@SuppressWarnings("all")
 public class PublishingLocation {
 
     private String city;

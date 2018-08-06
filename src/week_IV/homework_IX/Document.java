@@ -2,6 +2,7 @@ package week_IV.homework_IX;
 
 import java.util.Date;
 
+@SuppressWarnings("all")
 public abstract class Document {
 
     private String title;

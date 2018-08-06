@@ -8,7 +8,7 @@ package week_IV.homework_IX;
 
 import java.util.*;
 
-
+@SuppressWarnings("all")
 public class Client {
 
 	public void test() {
